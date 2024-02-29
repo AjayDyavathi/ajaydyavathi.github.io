@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajay Dyavathi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -38,9 +39,58 @@
                 <div class="typing-container" id="typing-container"></div>
                 <div class="photo-container">
                     <img src="profile_no_bg.webp" alt="Your Photo" class="photo">
+                </div>
+                <div class="tagline-text" id="jumble-text"></div>
+
+                <div class="fixed-bottom text-center mb-3">
+                    <button id="openModalButton" class="btn btn-secondary modal-button">Learn More About Me</button>
                   </div>
 
+                <div id="modal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Well, well, well, looks like someone's curious about me!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <p style="text-align: justify;">
+                            Well, I was born in 1999 in India and have always had a deep interest in robotics and artificial intelligence. 
+                            After completing my B.Tech in Electronics and Communication Engineering in 2020, where I explored embedded 
+                            systems like Arduino and Raspberry Pi, I shifted my focus to machine learning and data science. 
+                            I embarked on a journey of self-learning and hands-on projects, eager to delve deeper into this field.
+                            <br><br>
+
+                            In 2021, I joined Avaamo.ai as a Conversational AI Intern and quickly progressed to become a Conversational AI Engineer within a year. 
+                            During my time there, I developed intelligent chat agents integrated into websites, leading to a significant 30% improvement in user navigation efficiency.
+                            <br><br>
+
+                            Determined to further expand my knowledge, I pursued a Master's degree in Data Science in the USA and graduated 
+                            from the New York Institute of Technology in 2023. During my master's program, I immersed myself in statistical 
+                            machine learning models in the first year and explored advanced technologies in the second year. 
+                            These included Deep Neural Networks, Image Classification, Segmentation, Object Detection, Recurrent Networks, 
+                            Language Models, Transformers, and Autoencoders.
+                            <br><br>
+
+                            My journey in artificial intelligence reflects a deep passion and commitment to mastering the field. 
+                            I believe in the power of connections and the value of sharing knowledge. If you share my enthusiasm 
+                            for AI or simply want to connect, please don't hesitate to reach out. Let's start a conversation!
+                        </p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
                 <script>
+                    // Modal
+                    document.getElementById('openModalButton').addEventListener('click', function () {
+                        $('#modal').modal('show');
+                    });
+                    
+                    // Name typing animation
                     const texts = ["Ajay Dyavathi"];
                     let count = 0;
                     let index = 0;
@@ -65,6 +115,39 @@
                     }
 
                     type();
+
+                    // Tagline animation
+                    function animateText() {
+                    const jumbleText = document.getElementById('jumble-text');
+                    const words = ['I', 'love', 'to', 'make', 'machines'];
+                    const originalWord = 'think!';
+                    const shuffleDuration = 2000;
+
+                    function shuffleWord(word) {
+                        let shuffledWord = '';
+                        const letters = word.split('');
+                        const interval = setInterval(() => {
+                            letters.sort(() => Math.random() - 0.5);
+                            shuffledWord = letters.join('');
+                            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + shuffledWord + '</span>';
+                        }, 50);
+
+                        setTimeout(() => {
+                            clearInterval(interval);
+                            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + originalWord + '</span>';
+                        }, shuffleDuration);
+                    }
+
+                    setTimeout(() => {
+                        jumbleText.style.display = 'block';
+                    }, 2000);
+
+                    setTimeout(() => {
+                        shuffleWord(originalWord);
+                    }, 2000);
+                    }
+
+                    animateText()
                 </script>
             </div>
             <div id="skills" class="tab-pane fade" onclick="runSkillsAnimation()">
