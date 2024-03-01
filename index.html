@@ -1,416 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajay Dyavathi</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <div class="container-fluid">
-        <ul class="nav nav-tabs d-flex">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#skills" id="skills-tab" onclick="runSkillsAnimation()">Skills</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#cv">CV</a>
-            </li>
-        </ul>
-        <ul class="icons nav d-flex justify-content-end">
-            <li><a href="mailto:ajaydyavathi@gmail.com" target="_blank"><img src="social-icons/email.webp" alt="Email" class="icon"></a></li>
-            <li><a href="https://www.linkedin.com/in/ajay-dyavathi/" target="_blank"><img src="social-icons/linkedin.webp" alt="Github" class="icon"></a></li>
-            <li><a href="http://www.github.com/AjayDyavathi" target="_blank"><img src="social-icons/github.webp" alt="LinkedIn" class="icon"></a></li>
-        </ul>
-        
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade show active">
-                <div class="intro-text">Hello, I am</div>
-                <div class="typing-container" id="typing-container"></div>
-                <div class="photo-container">
-                    <img src="profile_no_bg.webp" alt="Your Photo" class="photo">
-                </div>
-                <div class="tagline-text" id="jumble-text"></div>
-
-                <div class="fixed-bottom text-center mb-3">
-                    <button id="openModalButton" class="btn btn-secondary modal-button">Learn More About Me</button>
-                  </div>
-
-                <div id="modal" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title">Well, well, well, looks like someone's curious about me!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        <p style="text-align: justify;">
-                            Well, I was born in 1999 in India and have always had a deep interest in robotics and artificial intelligence. 
-                            After completing my B.Tech in Electronics and Communication Engineering in 2020, where I explored embedded 
-                            systems like Arduino and Raspberry Pi, I shifted my focus to machine learning and data science. 
-                            I embarked on a journey of self-learning and hands-on projects, eager to delve deeper into this field.
-                            <br><br>
-
-                            In 2021, I joined Avaamo.ai as a Conversational AI Intern and quickly progressed to become a Conversational AI Engineer within a year. 
-                            During my time there, I developed intelligent chat agents integrated into websites, leading to a significant 30% improvement in user navigation efficiency.
-                            <br><br>
-
-                            Determined to further expand my knowledge, I pursued a Master's degree in Data Science in the USA and graduated 
-                            from the New York Institute of Technology in 2023. During my master's program, I immersed myself in statistical 
-                            machine learning models in the first year and explored advanced technologies in the second year. 
-                            These included Deep Neural Networks, Image Classification, Segmentation, Object Detection, Recurrent Networks, 
-                            Language Models, Transformers, and Autoencoders.
-                            <br><br>
-
-                            My journey in artificial intelligence reflects a deep passion and commitment to mastering the field. 
-                            I believe in the power of connections and the value of sharing knowledge. If you share my enthusiasm 
-                            for AI or simply want to connect, please don't hesitate to reach out. Let's start a conversation!
-                        </p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-
-                <script>
-                    // Modal
-                    document.getElementById('openModalButton').addEventListener('click', function () {
-                        $('#modal').modal('show');
-                    });
-                    
-                    // Name typing animation
-                    const texts = ["Ajay Dyavathi"];
-                    let count = 0;
-                    let index = 0;
-                    let currentText = "";
-                    let letter = "";
-
-                    function type() {
-                        if (count === texts.length) return;
-                        currentText = texts[count];
-                        letter = currentText.slice(0, index + 1);
-
-                        document.getElementById('typing-container').textContent = letter;
-
-                        if (letter.length === currentText.length) {
-                            count++;
-                            index = 0;
-                        } else {
-                            index++;
-                        }
-
-                        setTimeout(type, 100);
-                    }
-
-                    type();
-
-                    // Tagline animation
-                    function animateText() {
-                    const jumbleText = document.getElementById('jumble-text');
-                    const words = ['I', 'love', 'to', 'make', 'machines'];
-                    const originalWord = 'think!';
-                    const shuffleDuration = 2000;
-
-                    function shuffleWord(word) {
-                        let shuffledWord = '';
-                        const letters = word.split('');
-                        const interval = setInterval(() => {
-                            letters.sort(() => Math.random() - 0.5);
-                            shuffledWord = letters.join('');
-                            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + shuffledWord + '</span>';
-                        }, 50);
-
-                        setTimeout(() => {
-                            clearInterval(interval);
-                            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + originalWord + '</span>';
-                        }, shuffleDuration);
-                    }
-
-                    setTimeout(() => {
-                        jumbleText.style.display = 'block';
-                    }, 2000);
-
-                    setTimeout(() => {
-                        shuffleWord(originalWord);
-                    }, 2000);
-                    }
-
-                    animateText()
-                </script>
-            </div>
-            <div id="skills" class="tab-pane fade" onclick="runSkillsAnimation()">
-                <div class="skills-tabs full-width">
-                    <div class="skills-tab active" onclick="showTab('languages')">Languages</div>
-                    <div class="skills-tab" onclick="showTab('machine-learning')">Machine Learning</div>
-                    <div class="skills-tab" onclick="showTab('data-visualization')">Data Visualization</div>
-                    <div class="skills-tab" onclick="showTab('big-data')">Big Data</div>
-                    <div class="skills-tab" onclick="showTab('cloud-computing')">Cloud Computing</div>
-                    <div class="skills-tab" onclick="showTab('web-development')">Web Development</div>
-                    <div class="skills-tab" onclick="showTab('databases')">Databases</div>
-                    <div class="skills-tab" onclick="showTab('others')">Others</div>
-                </div>
-
-                <div class="skills-icon-container full-width">
-                    <img src="skills-icons/apache-spark.webp" class="skills-icon" data-top="40%" data-left="10%" data-scale="0.16" data-category="big-data machine-learning">
-                    <img src="skills-icons/aws.webp" class="skills-icon" data-top="47%" data-left="30%" data-scale="0.11" data-category="cloud-computing machine-learning">
-                    <img src="skills-icons/azure.webp" class="skills-icon" data-top="57%" data-left="28%" data-scale="0.12" data-category="cloud-computing machine-learning">
-                    <img src="skills-icons/bokeh.webp" class="skills-icon" data-top="40%" data-left="78%" data-scale="0.14" data-category="data-visualization">
-                    <img src="skills-icons/css.webp" class="skills-icon" data-top="90%" data-left="25%" data-scale="0.07" data-category="languages web-development">
-                    <img src="skills-icons/c.webp" class="skills-icon" data-top="73%" data-left="91%" data-scale="0.05" data-category="languages">
-                    <img src="skills-icons/c++.webp" class="skills-icon" data-top="82%" data-left="67%" data-scale="0.05" data-category="languages">
-                    <img src="skills-icons/dash.webp" class="skills-icon" data-top="92%" data-left="82%" data-scale="0.14" data-category="data-visualization">
-                    <img src="skills-icons/django.webp" class="skills-icon" data-top="5%" data-left="48%" data-scale="0.12" data-category="web-development">
-                    <img src="skills-icons/docker.webp" class="skills-icon" data-top="45%" data-left="20%" data-scale="0.15" data-category="machine-learning cloud-computing">
-                    <img src="skills-icons/excel.webp" class="skills-icon" data-top="75%" data-left="7%" data-scale="0.08" data-category="data-visualization">
-                    <img src="skills-icons/flask.webp" class="skills-icon" data-top="36%" data-left="88%" data-scale="0.07" data-category="web-development">
-                    <img src="skills-icons/ggplot2.webp" class="skills-icon" data-top="20%" data-left="75%" data-scale="0.07" data-category="data-visualization">
-                    <img src="skills-icons/gcp.webp" class="skills-icon" data-top="33%" data-left="28%" data-scale="0.14" data-category="cloud-computing machine-learning">
-                    <img src="skills-icons/git.webp" class="skills-icon" data-top="30%" data-left="17%" data-scale="0.1" data-category="others">
-                    <img src="skills-icons/gradio.webp" class="skills-icon" data-top="83%" data-left="45%" data-scale="0.14" data-category="data-visualization web-development machine-learning">
-                    <img src="skills-icons/hadoop.webp" class="skills-icon" data-top="70%" data-left="20%" data-scale="0.15" data-category="big-data">
-                    <img src="skills-icons/hf.webp" class="skills-icon" data-top="58%" data-left="85%" data-scale="0.13" data-category="machine-learning">
-                    <img src="skills-icons/html.webp" class="skills-icon" data-top="85%" data-left="17%" data-scale="0.1" data-category="languages web-development">
-                    <img src="skills-icons/java.webp" class="skills-icon" data-top="88%" data-left="72%" data-scale="0.05" data-category="languages">
-                    <img src="skills-icons/js.webp" class="skills-icon" data-top="85%" data-left="32%" data-scale="0.13" data-category="languages web-development">
-                    <img src="skills-icons/keras.webp" class="skills-icon" data-top="57%" data-left="73%" data-scale="0.2" data-category="machine-learning">
-                    <img src="skills-icons/matplotlib.webp" class="skills-icon" data-top="16%" data-left="58%" data-scale="0.1" data-category="data-visualization">
-                    <img src="skills-icons/mongodb.webp" class="skills-icon" data-top="60%" data-left="12%" data-scale="0.2" data-category="databases">
-                    <img src="skills-icons/mysql.webp" class="skills-icon" data-top="20%" data-left="15%" data-scale="0.13" data-category="databases">
-                    <img src="skills-icons/numpy.webp" class="skills-icon" data-top="80%" data-left="82%" data-scale="0.15" data-category="machine-learning">
-                    <img src="skills-icons/pandas.webp" class="skills-icon" data-top="50%" data-left="78%" data-scale="0.15" data-category="machine-learning">
-                    <img src="skills-icons/php.webp" class="skills-icon" data-top="80%" data-left="25%" data-scale="0.08" data-category="web-development languages">
-                    <img src="skills-icons/plotly.webp" class="skills-icon" data-top="32%" data-left="80%" data-scale="0.15" data-category="data-visualization">
-                    <img src="skills-icons/power-bi.webp" class="skills-icon" data-top="10%" data-left="70%" data-scale="0.08" data-category="data-visualization">
-                    <img src="skills-icons/python.webp" class="skills-icon" data-top="50%" data-left="50%" data-scale="0.35" data-category="languages">
-                    <img src="skills-icons/pytorch1.webp" class="skills-icon" data-top="70%" data-left="73%" data-scale="0.5" data-category="machine-learning">
-                    <img src="skills-icons/rstudio.webp" class="skills-icon" data-top="45%" data-left="68%" data-scale="0.1" data-category="languages">
-                    <img src="skills-icons/r.webp" class="skills-icon" data-top="70%" data-left="37%" data-scale="0.15" data-category="languages">
-                    <img src="skills-icons/seaborn.webp" class="skills-icon" data-top="17%" data-left="50%" data-scale="0.1" data-category="data-visualization">
-                    <img src="skills-icons/sklearn.webp" class="skills-icon" data-top="26%" data-left="65%" data-scale="0.2" data-category="machine-learning">
-                    <img src="skills-icons/spark.webp" class="skills-icon" data-top="20%" data-left="25%" data-scale="0.08" data-category="machine-learning big-data">
-                    <img src="skills-icons/sql.webp" class="skills-icon" data-top="54%" data-left="93%" data-scale="0.1" data-category="databases languages">
-                    <img src="skills-icons/sqlite.webp" class="skills-icon" data-top="10%" data-left="30%" data-scale="0.13" data-category="databases">
-                    <img src="skills-icons/streamlit.webp" class="skills-icon" data-top="85%" data-left="58%" data-scale="0.2" data-category="machine-learning web-development">
-                    <img src="skills-icons/swift.webp" class="skills-icon" data-top="20%" data-left="83%" data-scale="0.1" data-category="languages">
-                    <img src="skills-icons/tableau.webp" class="skills-icon" data-top="92%" data-left="45%" data-scale="0.3" data-category="data-visualization">
-                    <img src="skills-icons/tf.webp" class="skills-icon" data-top="25%" data-left="38%" data-scale="0.17" data-category="machine-learning">
-                </div>
-                                
-                <script>
-                    let skillsAnimationExecuted = false;
-
-                    function runSkillsAnimation() {
-                        if (!skillsAnimationExecuted) {
-                            const icons = document.querySelectorAll('.skills-icon');
-
-                            // Set initial position and opacity of icons
-                            icons.forEach((icon) => {
-                                const top = icon.getAttribute('data-top');
-                                const left = icon.getAttribute('data-left');
-                                const scale = icon.getAttribute('data-scale');
-
-                                icon.style.top = top;
-                                icon.style.left = left;
-                                icon.style.opacity = 0;
-                                icon.style.transform = 'translate(-50%, -50%) scale(0)';
-                            });
-
-                            // Animate icons
-                            icons.forEach((icon, index) => {
-                                setTimeout(() => {
-                                    const top = icon.getAttribute('data-top');
-                                    const left = icon.getAttribute('data-left');
-                                    const scale = icon.getAttribute('data-scale');
-
-                                    icon.style.transition = `top 2s, left 2s, opacity 0.5s, transform 0.5s`;
-                                    icon.style.top = top;
-                                    icon.style.left = left;
-                                    icon.style.opacity = 1;
-                                    icon.style.transform = `translate(-50%, -50%) scale(${scale*0.8})`;
-                                }, 20 * index);
-                            });
-
-                            skillsAnimationExecuted = true;
-                        }
-                    }
-
-                    function showTab(category) {
-                    const tabs = document.querySelectorAll('.skills-tab');
-                    tabs.forEach(tab => {
-                        tab.classList.remove('active');
-                    });
-                    
-                    const icons = document.querySelectorAll('.skills-icon');
-                    icons.forEach(icon => {
-                        const categories = icon.getAttribute('data-category').split(' ');
-                        if (categories.includes(category)) {
-                        icon.style.opacity = 1;
-                        icon.style.filter = 'drop-shadow(2px 20px 40px rgba(0,0,0,0.5))';
-                        icon.classList.add('active');
-                        } else {
-                        icon.style.opacity = 0.15;
-                        icon.style.filter = 'none';
-                        icon.classList.remove('active');
-                        }
-                    });
-                    
-                    const activeTab = document.querySelector(`.skills-tab.${category}`);
-                    activeTab.classList.add('active');
-                    }
-                    
-                    // eveEt listener to body to make all icons active when clicking anywhere except on the tabs
-                    document.body.addEventListener('click', function(event) {
-                    const tabs = document.querySelectorAll('.skills-tab');
-                    if (!event.target.classList.contains('skills-tab')) {
-                        tabs.forEach(tab => {
-                        tab.classList.remove('active');
-                        });
-                        const icons = document.querySelectorAll('.skills-icon');
-                        icons.forEach(icon => {
-                        icon.style.opacity = 1;
-                        icon.classList.add('active');
-                        });
-                    }
-                    });
-                    
-                    document.body.addEventListener('click', function(event) {
-                    const tabs = document.querySelectorAll('.skills-tab');
-                    if (!event.target.classList.contains('skills-tab')) {
-                        resetIcons();
-                    }
-                    });
-                    
-                    function resetIcons() {
-                    const icons = document.querySelectorAll('.skills-icon');
-                    icons.forEach(icon => {
-                        icon.style.opacity = 1;
-                        icon.style.filter = 'none'; 
-                    });
-                    }
-                </script>
-    
-            </div>
-            <div id="projects" class="tab-pane fade">
-                <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10">
-                            <div class="row row-cols-1 row-cols-md-3 g-4">
-                                <!-- Card 1 -->
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/cityscapes.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Urban Street Scene Understanding</h5>
-                                            <p class="card-text">Employed PyTorch for UNet and SegNet models on the Cityscapes data set, achieving 90% accuracy in semantic segmentation. Highlighted deep learning and DCNN expertise in urban scene analysis.</p>
-                                        </div>
-                                        <div class="card-footer">
-                                            <!-- <a href="#" class="btn btn-primary">See Demo</a> -->
-                                            <a href="https://www.github.com/AjayDyavathi/Cityscapes" target="_blank" class="btn btn-secondary">Code</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/BBC_News.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">BBC News Articles Clustering</h5>
-                                            <p class="card-text">Leveraged K-means and advanced NLP for clustering 2225 BBC News articles, applied PCA for dimensionality reduction and LDA for topic naming, and visualized interactive results with t-SNE and Plotly.</p>
-                                        </div>
-                                        <div class="card-footer">
-                                            <!-- <a href="#" class="btn btn-primary">See Demo</a> -->
-                                            <a href="https://github.com/AjayDyavathi/Text_Categorization" target="_blank" class="btn btn-secondary">Code</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/lung_seg.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Lung X-ray Segmentation</h5>
-                                            <p class="card-text">Developed a U-Net transformer for lung segmentation in X-ray images, applying advanced processing methods to enhance quality and achieving an 82% IoU score, demonstrating proficiency in image segmentation.</p>
-                                        </div>
-                                        <!-- <div class="card-footer">
-                                            <a href="#" class="btn btn-primary">See Demo</a>
-                                            <a href="#" class="btn btn-secondary">Code</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/cifar_10.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">CIFAR-10 Image Classification</h5>
-                                            <p class="card-text">Engineered a DCNN with Residual and Inception blocks for CIFAR-10, reaching 90% accuracy. Optimized with callbacks, and learning rate schedulers, and integrated into a Telegram bot.</p>
-                                        </div>
-                                        <!-- <div class="card-footer">
-                                            <a href="#" class="btn btn-primary">See Demo</a>
-                                            <a href="#" class="btn btn-secondary">Code</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/medical_analysis.PNG" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">ML-based Diagnosis Website</h5>
-                                            <p class="card-text">Designed a Django-based medical diagnosis web platform, integrating traditional ML models using scikit-learn and SQLite database for data handling, deployed on AWS EC2 for enhanced scalability and reliability.</p>
-                                        </div>
-                                        <!-- <div class="card-footer">
-                                            <a href="#" class="btn btn-primary">See Demo</a>
-                                            <a href="#" class="btn btn-secondary">Code</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <div class="card h-100 p-3 flip-card shadow">
-                                        <img src="project_thumbnails/teat_mastitis.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Cow Teat Mastitis Classification</h5>
-                                            <p class="card-text">Built a custom ResNet model using PyTorch for cow teat mastitis classification, categorizing severity into 4 levels. Implemented pseudo-labeling for data augmentation, achieving 85% accuracy.</p>
-                                        </div>
-                                        <!-- <div class="card-footer">
-                                            <a href="#" class="btn btn-primary">See Demo</a>
-                                            <a href="#" class="btn btn-secondary">Code</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <!-- More cards -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="cv" class="tab-pane fade">
-                <div class="row justify-content-center">
-                    <div class="col-7" style="height: 80vh; overflow: hidden;">
-                        <iframe src="Ajay_Dyavathi_Resume.pdf" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Ajay Dyavathi</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg fixed-top">
+			<div class="container-fluid">
+				<!-- Navbar toggle button (for mobile) -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- Navbar content -->
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<!-- Left-aligned tabs -->
+					<ul class="nav nav-tabs me-auto mb-2 mb-lg-0 flex-column flex-sm-row" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+								type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="skills-tab" data-bs-toggle="tab" data-bs-target="#skills"
+								type="button" role="tab" aria-controls="skills" aria-selected="false">Skills</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
+								type="button" role="tab" aria-controls="projects" aria-selected="false">Projects</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="cv-tab" data-bs-toggle="tab" data-bs-target="#cv" role="tab"
+								aria-controls="cv" aria-selected="false">CV</button>
+						</li>
+					</ul>
+					<!-- Right-aligned icons -->
+				</div>
+				<div class="social-icons d-none d-lg-flex justify-content-center align-items-center">
+					<a href="mailto:ajaydyavathi@gmail.com" target="_blank"><img class="social-icon" src="social-icons/email.webp" alt="Email"></a>
+					<a href="https://www.linkedin.com/in/ajay-dyavathi/" target="_blank"><img class="social-icon" src="social-icons/linkedin.webp" alt="LinkedIn"></a>
+					<a href="http://www.github.com/AjayDyavathi" target="_blank"><img class="social-icon" src="social-icons/github.webp" alt="GitHub"></a>
+				</div>
+			</div>
+		</nav>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+				<div class="intro-text">Hello, I am</div>
+				<div class="typing-container-holder">
+					<h1 class="typing-container" id="typing-container"></h1>
+				</div>
+				<div class="photo-container">
+					<img src="profile_no_bg.webp" alt="Profile Photo" class="photo">
+				</div>
+				<div class="tagline-text" id="jumble-text"></div>
+				<div class="fixed-bottom text-center mb-3">
+					<button id="openModalButton" class="btn btn-secondary modal-button" data-bs-toggle="modal" data-bs-target="#modal">Learn More About Me</button>
+				</div>
+				<div class="modal fade" id="modal" tabindex="-1">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Well, well, well, looks like someone's curious about me!</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<p style="text-align: justify;">
+									Well, I was born in 1999 in India and have always had a deep interest in robotics and artificial intelligence. 
+									After completing my B.Tech in Electronics and Communication Engineering in 2020, where I explored embedded 
+									systems like Arduino and Raspberry Pi, I shifted my focus to machine learning and data science. 
+									I embarked on a journey of self-learning and hands-on projects, eager to delve deeper into this field.
+									<br><br>
+									In 2021, I joined Avaamo.ai as a Conversational AI Intern and quickly progressed to become a Conversational AI Engineer within a year. 
+									During my time there, I developed intelligent chat agents integrated into websites, leading to a significant 30% improvement in user navigation efficiency.
+									<br><br>
+									Determined to further expand my knowledge, I pursued a Master's degree in Data Science in the USA and graduated 
+									from the New York Institute of Technology in 2023. During my master's program, I immersed myself in statistical 
+									machine learning models in the first year and explored advanced technologies in the second year. 
+									These included Deep Neural Networks, Image Classification, Segmentation, Object Detection, Recurrent Networks, 
+									Language Models, Transformers, and Autoencoders.
+									<br><br>
+									My journey in artificial intelligence reflects a deep passion and commitment to mastering the field. 
+									I believe in the power of connections and the value of sharing knowledge. If you share my enthusiasm 
+									for AI or simply want to connect, please don't hesitate to reach out. Let's start a conversation, I'm curious about you too!
+								</p>
+							</div>
+							<div class="modal-footer social-icons">
+								<a href="mailto:ajaydyavathi@gmail.com" target="_blank"><img class="social-icon" src="social-icons/email.webp" alt="Email"></a>
+								<a href="https://www.linkedin.com/in/ajay-dyavathi/" target="_blank"><img class="social-icon" src="social-icons/linkedin.webp" alt="LinkedIn"></a>
+								<a href="http://www.github.com/AjayDyavathi" target="_blank"><img class="social-icon" src="social-icons/github.webp" alt="GitHub"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					// Name typing animation
+					const texts = ["Ajay Dyavathi"];
+					let count = 0;
+					let index = 0;
+					let currentText = "";
+					let letter = "";
+					
+					function type() {
+					    if (count === texts.length) return;
+					    currentText = texts[count];
+					    letter = currentText.slice(0, index + 1);
+					
+					    document.getElementById('typing-container').textContent = letter;
+					
+					    if (letter.length === currentText.length) {
+					        count++;
+					        index = 0;
+					    } else {
+					        index++;
+					    }
+					
+					    setTimeout(type, 100);
+					}
+					
+					type();
+					
+					//Tagline
+					function animateText() {
+					    const jumbleText = document.getElementById('jumble-text');
+					    const words = ['I', 'love', 'to', 'make', 'machines'];
+					    const originalWord = 'think!';
+					    const shuffleDuration = 2000;
+					
+					    function shuffleWord(word) {
+					        let shuffledWord = '';
+					        const letters = word.split('');
+					        const interval = setInterval(() => {
+					            letters.sort(() => Math.random() - 0.5);
+					            shuffledWord = letters.join('');
+					            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + shuffledWord + '</span>';
+					        }, 50);
+					
+					        setTimeout(() => {
+					            clearInterval(interval);
+					            jumbleText.innerHTML = words.join(' ') + ' <span class="ignore-center">' + originalWord + '</span>';
+					        }, shuffleDuration);
+					    }
+					
+					    setTimeout(() => {
+					        jumbleText.style.display = 'block';
+					    }, 100);
+					
+					    setTimeout(() => {
+					        shuffleWord(originalWord);
+					    }, 2000);
+					    }
+					
+					    animateText()
+				</script>
+			</div>
+			<div class="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills-tab">
+				<div class="skills-tabs full-width">
+					<div class="skills-tab active" onclick="showTab('languages')">Languages</div>
+					<div class="skills-tab" onclick="showTab('machine-learning')">Machine Learning</div>
+					<div class="skills-tab" onclick="showTab('data-visualization')">Data Visualization</div>
+					<div class="skills-tab" onclick="showTab('big-data')">Big Data</div>
+					<div class="skills-tab" onclick="showTab('cloud-computing')">Cloud Computing</div>
+					<div class="skills-tab" onclick="showTab('web-development')">Web Development</div>
+					<div class="skills-tab" onclick="showTab('databases')">Databases</div>
+					<div class="skills-tab" onclick="showTab('others')">Others</div>
+				</div>
+				<div class="skills-icon-container full-width">
+					<img src="skills-icons/apache-spark.webp" class="skills-icon" data-top="40%" data-left="10%" data-scale="0.16" data-category="big-data machine-learning">
+					<img src="skills-icons/aws.webp" class="skills-icon" data-top="47%" data-left="30%" data-scale="0.11" data-category="cloud-computing machine-learning">
+					<img src="skills-icons/azure.webp" class="skills-icon" data-top="57%" data-left="28%" data-scale="0.12" data-category="cloud-computing machine-learning">
+					<img src="skills-icons/bokeh.webp" class="skills-icon" data-top="40%" data-left="78%" data-scale="0.14" data-category="data-visualization">
+					<img src="skills-icons/css.webp" class="skills-icon" data-top="90%" data-left="25%" data-scale="0.07" data-category="languages web-development">
+					<img src="skills-icons/c.webp" class="skills-icon" data-top="73%" data-left="88%" data-scale="0.05" data-category="languages">
+					<img src="skills-icons/c++.webp" class="skills-icon" data-top="85%" data-left="67%" data-scale="0.05" data-category="languages">
+					<img src="skills-icons/dash.webp" class="skills-icon" data-top="92%" data-left="82%" data-scale="0.14" data-category="data-visualization">
+					<img src="skills-icons/django.webp" class="skills-icon" data-top="5%" data-left="48%" data-scale="0.12" data-category="web-development">
+					<img src="skills-icons/docker.webp" class="skills-icon" data-top="45%" data-left="20%" data-scale="0.15" data-category="machine-learning cloud-computing">
+					<img src="skills-icons/excel.webp" class="skills-icon" data-top="75%" data-left="7%" data-scale="0.08" data-category="data-visualization">
+					<img src="skills-icons/flask.webp" class="skills-icon" data-top="36%" data-left="88%" data-scale="0.07" data-category="web-development">
+					<img src="skills-icons/ggplot2.webp" class="skills-icon" data-top="20%" data-left="75%" data-scale="0.07" data-category="data-visualization">
+					<img src="skills-icons/gcp.webp" class="skills-icon" data-top="33%" data-left="28%" data-scale="0.14" data-category="cloud-computing machine-learning">
+					<img src="skills-icons/git.webp" class="skills-icon" data-top="30%" data-left="17%" data-scale="0.1" data-category="others">
+					<img src="skills-icons/gradio.webp" class="skills-icon" data-top="83%" data-left="45%" data-scale="0.14" data-category="data-visualization web-development machine-learning">
+					<img src="skills-icons/hadoop.webp" class="skills-icon" data-top="70%" data-left="20%" data-scale="0.15" data-category="big-data">
+					<img src="skills-icons/hf.webp" class="skills-icon" data-top="58%" data-left="85%" data-scale="0.13" data-category="machine-learning">
+					<img src="skills-icons/html.webp" class="skills-icon" data-top="85%" data-left="17%" data-scale="0.1" data-category="languages web-development">
+					<img src="skills-icons/java.webp" class="skills-icon" data-top="88%" data-left="72%" data-scale="0.05" data-category="languages">
+					<img src="skills-icons/js.webp" class="skills-icon" data-top="85%" data-left="32%" data-scale="0.13" data-category="languages web-development">
+					<img src="skills-icons/keras.webp" class="skills-icon" data-top="57%" data-left="73%" data-scale="0.2" data-category="machine-learning">
+					<img src="skills-icons/matplotlib.webp" class="skills-icon" data-top="16%" data-left="58%" data-scale="0.1" data-category="data-visualization">
+					<img src="skills-icons/mongodb.webp" class="skills-icon" data-top="60%" data-left="12%" data-scale="0.2" data-category="databases">
+					<img src="skills-icons/mysql.webp" class="skills-icon" data-top="20%" data-left="15%" data-scale="0.13" data-category="databases">
+					<img src="skills-icons/numpy.webp" class="skills-icon" data-top="80%" data-left="82%" data-scale="0.15" data-category="machine-learning">
+					<img src="skills-icons/pandas.webp" class="skills-icon" data-top="50%" data-left="78%" data-scale="0.15" data-category="machine-learning">
+					<img src="skills-icons/php.webp" class="skills-icon" data-top="80%" data-left="25%" data-scale="0.08" data-category="web-development languages">
+					<img src="skills-icons/plotly.webp" class="skills-icon" data-top="32%" data-left="80%" data-scale="0.15" data-category="data-visualization">
+					<img src="skills-icons/power-bi.webp" class="skills-icon" data-top="10%" data-left="70%" data-scale="0.08" data-category="data-visualization">
+					<img src="skills-icons/python.webp" class="skills-icon" data-top="50%" data-left="50%" data-scale="0.35" data-category="languages">
+					<img src="skills-icons/pytorch1.webp" class="skills-icon" data-top="70%" data-left="68%" data-scale="0.5" data-category="machine-learning">
+					<img src="skills-icons/rstudio.webp" class="skills-icon" data-top="45%" data-left="68%" data-scale="0.1" data-category="languages">
+					<img src="skills-icons/r.webp" class="skills-icon" data-top="70%" data-left="37%" data-scale="0.15" data-category="languages">
+					<img src="skills-icons/seaborn.webp" class="skills-icon" data-top="17%" data-left="50%" data-scale="0.1" data-category="data-visualization">
+					<img src="skills-icons/sklearn.webp" class="skills-icon" data-top="26%" data-left="65%" data-scale="0.2" data-category="machine-learning">
+					<img src="skills-icons/spark.webp" class="skills-icon" data-top="20%" data-left="25%" data-scale="0.08" data-category="machine-learning big-data">
+					<img src="skills-icons/sql.webp" class="skills-icon" data-top="54%" data-left="93%" data-scale="0.1" data-category="databases languages">
+					<img src="skills-icons/sqlite.webp" class="skills-icon" data-top="10%" data-left="30%" data-scale="0.13" data-category="databases">
+					<img src="skills-icons/streamlit.webp" class="skills-icon" data-top="85%" data-left="58%" data-scale="0.2" data-category="machine-learning web-development">
+					<img src="skills-icons/swift.webp" class="skills-icon" data-top="20%" data-left="83%" data-scale="0.1" data-category="languages">
+					<img src="skills-icons/tableau.webp" class="skills-icon" data-top="92%" data-left="45%" data-scale="0.3" data-category="data-visualization">
+					<img src="skills-icons/tf.webp" class="skills-icon" data-top="28%" data-left="40%" data-scale="0.17" data-category="machine-learning">
+				</div>
+				<script>
+					document.addEventListener('DOMContentLoaded', function () {
+					    const skillsTab = document.getElementById('skills-tab');
+					    skillsTab.addEventListener('click', function () {
+					        runSkillsAnimation();
+					    });
+					});
+					
+					let skillsAnimationExecuted = false;
+					
+					function runSkillsAnimation() {
+					    if (!skillsAnimationExecuted) {
+					        const icons = document.querySelectorAll('.skills-icon');
+					
+					        let scale_multiplier = (window.innerWidth * 0.0005);
+					        if (window.innerHeight > window.innerWidth){
+					            scale_multiplier = window.innerHeight * 0.0003;
+					        }
+					        
+					
+					        // Set initial position and opacity of icons
+					        icons.forEach((icon, index) => {
+					            const { top, left, scale } = icon.dataset;
+					            icon.style.cssText = `
+					                top: ${top};
+					                left: ${left};
+					                opacity: 0;
+					                transform: translate(-50%, -50%) scale(0);
+					            `;
+					
+					            // Animate icons
+					            setTimeout(() => {
+					                icon.style.transition = `top 2s, left 2s, opacity 0.5s, transform 0.5s`;
+					                icon.style.top = top;
+					                icon.style.left = left;
+					                icon.style.opacity = 1;
+					                icon.style.transform = `translate(-50%, -50%) scale(${scale * scale_multiplier})`;
+					            }, 20 * index);
+					        });
+					
+					        skillsAnimationExecuted = true;
+					    }
+					}
+					
+					function showTab(category) {
+					    const tabs = document.querySelectorAll('.skills-tab');
+					    tabs.forEach(tab => {
+					        tab.classList.remove('active');
+					    });
+					
+					    const icons = document.querySelectorAll('.skills-icon');
+					    icons.forEach(icon => {
+					        const categories = icon.dataset.category.split(' ');
+					        if (categories.includes(category)) {
+					            icon.style.opacity = 1;
+					            icon.style.filter = 'drop-shadow(2px 20px 40px rgba(0,0,0,0.5))';
+					            icon.classList.add('active');
+					        } else {
+					            icon.style.opacity = 0.15;
+					            icon.style.filter = 'none';
+					            icon.classList.remove('active');
+					        }
+					    });
+					
+					    const activeTab = document.querySelector(`.skills-tab.${category}`);
+					    if (activeTab) {
+					        activeTab.classList.add('active');
+					    }
+					}
+					
+					
+					// Event listener to body to make all icons active when clicking anywhere except on the tabs
+					document.body.addEventListener('click', function(event) {
+					    const tabs = document.querySelectorAll('.skills-tab');
+					    if (!event.target.classList.contains('skills-tab')) {
+					        tabs.forEach(tab => {
+					            tab.classList.remove('active');
+					        });
+					        const icons = document.querySelectorAll('.skills-icon');
+					        icons.forEach(icon => {
+					            icon.style.opacity = 1;
+					            icon.classList.add('active');
+					        });
+					    }
+					});
+					
+					document.body.addEventListener('click', function(event) {
+					    const tabs = document.querySelectorAll('.skills-tab');
+					    if (!event.target.classList.contains('skills-tab')) {
+					        resetIcons();
+					    }
+					});
+					
+					function resetIcons() {
+					    const icons = document.querySelectorAll('.skills-icon');
+					    icons.forEach(icon => {
+					        icon.style.opacity = 1;
+					        icon.style.filter = 'none'; 
+					    });
+					}
+				</script>
+			</div>
+			<div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+				<div class="container-fluid">
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<div class="row row-cols-1 row-cols-md-3 g-4">
+								<!-- Card 1 -->
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/cityscapes.png" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">Urban Street Scene Understanding</h5>
+											<p class="card-text">Employed PyTorch for UNet and SegNet models on the Cityscapes data set, achieving 90% accuracy in semantic segmentation. Highlighted deep learning and DCNN expertise in urban scene analysis.</p>
+										</div>
+										<div class="card-footer">
+											<!-- <a href="#" class="btn btn-primary">See Demo</a> -->
+											<a href="https://www.github.com/AjayDyavathi/Cityscapes" target="_blank" class="btn btn-secondary">Code</a>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/BBC_News.png" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">BBC News Articles Clustering</h5>
+											<p class="card-text">Leveraged K-means and advanced NLP for clustering 2225 BBC News articles, applied PCA for dimensionality reduction and LDA for topic naming, and visualized interactive results with t-SNE and Plotly.</p>
+										</div>
+										<div class="card-footer">
+											<a href="https://github.com/AjayDyavathi/Text_Categorization" target="_blank" class="btn btn-secondary">Code</a>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/lung_seg.png" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">Lung X-ray Segmentation</h5>
+											<p class="card-text">Developed a U-Net transformer for lung segmentation in X-ray images, applying advanced processing methods to enhance quality and achieving an 82% IoU score, demonstrating proficiency in image segmentation.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/cifar_10.png" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">CIFAR-10 Image Classification</h5>
+											<p class="card-text">Engineered a DCNN with Residual and Inception blocks for CIFAR-10, reaching 90% accuracy. Optimized with callbacks, and learning rate schedulers, and integrated into a Telegram bot.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/medical_analysis.PNG" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">ML-based Diagnosis Website</h5>
+											<p class="card-text">Designed a Django-based medical diagnosis web platform, integrating traditional ML models using scikit-learn and SQLite database for data handling, deployed on AWS EC2 for enhanced scalability and reliability.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card h-100 p-3 flip-card shadow">
+										<img src="project_thumbnails/teat_mastitis.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">Cow Teat Mastitis Classification</h5>
+											<p class="card-text">Built a custom ResNet model using PyTorch for cow teat mastitis classification, categorizing severity into 4 levels. Implemented pseudo-labeling for data augmentation, achieving 85% accuracy.</p>
+										</div>
+									</div>
+								</div>
+								<!-- More cards -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="cv" role="tabpanel" aria-labelledby="cv-tab">
+				<div class="pdf-container">
+					<div class="text-center">
+						<a href="Ajay_Dyavathi_Resume.pdf" target="_blank" download class="btn btn-outline-seconday">Download CV</a>
+					</div>
+					<embed src="Ajay_Dyavathi_Resume.pdf" type="application/pdf" width="100%" height="100%">
+				</div>
+			</div>
+		</div>
+		<script>
+			document.querySelectorAll('.nav-link').forEach(item => {
+			item.addEventListener('click', () => {
+			const navbarToggler = document.querySelector('.navbar-toggler');
+			if (navbarToggler.getAttribute('aria-expanded') === 'true') {
+			    navbarToggler.click();
+			}
+			});
+			});
+		</script>
+		<!-- Bootstrap Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>
